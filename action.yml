@@ -23,6 +23,11 @@ runs: # 액션 실제 실행(step으로 구분)
     - id: return-result
       run: |
         echo "num-arg=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
-        echo "num-arg=$(${GITHUB_ACTION_PATH}/count-args.sh ${INPUTS_ARGUMENTS_TO_COUNT})" >> $GITHUB_OUTPUT
+      # echo "num-arg=$(${GITHUB_ACTION_PATH}/count-args.sh ${INPUTS_ARGUMENTS_TO_COUNT})" >> $GITHUB_OUTPUT
       shell: bash  
+    - name: echo the number of arguments 
+      run: |
+        echo ${{ steps.return-result.outputs.num-args }}
+        echo num-args
+      shell: bash
 
