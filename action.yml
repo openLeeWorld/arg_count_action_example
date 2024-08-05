@@ -17,7 +17,7 @@ runs: # 액션 실제 실행(step으로 구분)
         echo Arguments: ${{ inputs.arguments-to-count }}
       shell: bash
     - id: return-result
-      run: \
+      run: |
         echo "num-arg=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
       shell: bash  
 
