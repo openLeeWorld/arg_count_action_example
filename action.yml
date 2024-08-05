@@ -1,0 +1,23 @@
+name: 'Argument Counter' # 이 액션의 이름(필수)
+description: 'Count # of arguments passed in' # 액션 설명(필수)
+inputs: # 액션 입력값 (선택)
+  arguments-to-count: # input id
+    description: 'arguments to count'
+    required: true
+    default: ''
+outputs: # 액션 출력값(선택)
+  arg-count:
+    description: "Count of arguments passed in"
+    value: ${{ steps.return-result.outputs.num-args }}
+runs: # 액션 실제 실행(step으로 구분)
+  using: "composite" # 액션 타입: 복합 액션
+  steps: 
+    - name: Print arguments if any
+      run: |
+        echo Arguments: ${{ inputs.arguments-to-count }}
+      shell: bash
+    - id: return-result
+      run: \
+        echo "num-arg=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
+      shell: bash  
+
