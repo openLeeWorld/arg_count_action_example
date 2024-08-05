@@ -1,0 +1,10 @@
+이 리포는 custom action을 만들기 위해 프로그램(여기서는 스크립트)와
+action.yml (액션을 만들기 위한 인터페이스 파일)를 만들어서 저장했다.
+Action Marketplace에 release도 가능
+
+액션의 조건)
+1. 개별 깃허브 리포
+2. 고유한 이름
+3. 버전 식별자
+4. README.md로 상세히 설명
+5. action.yml or action.yaml를 루트 디렉토리에 포함
