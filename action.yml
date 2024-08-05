@@ -16,8 +16,13 @@ runs: # 액션 실제 실행(step으로 구분)
       run: |
         echo Arguments: ${{ inputs.arguments-to-count }}
       shell: bash
+    - name: Grant execution privilege to .sh
+      run: |
+        chmod +x ${{ github.action_path }}/count-args.sh
+      shell: bash
     - id: return-result
       run: |
         echo "num-arg=`${{ github.action_path }}/count-args.sh ${{ inputs.arguments-to-count }}`" >> $GITHUB_OUTPUT
+        echo "num-arg=$(${GITHUB_ACTION_PATH}/count-args.sh ${INPUTS_ARGUMENTS_TO_COUNT})" >> $GITHUB_OUTPUT
       shell: bash  
 
